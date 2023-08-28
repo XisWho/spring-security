@@ -2,6 +2,7 @@ package com.xw.config;
 
 import com.xw.customize.authenticationHandler.MyAuthenticationFailureHandler;
 import com.xw.customize.authenticationHandler.MyAuthenticationSuccessHandler;
+import com.xw.customize.logoutHandler.MyLogoutSuccessHandler;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -32,7 +33,8 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/logout")
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
-                .logoutSuccessUrl("/login.html")
+                // .logoutSuccessUrl("/login.html")
+                .logoutSuccessHandler(new MyLogoutSuccessHandler())
                 .and()
                 .csrf().disable();
     }
