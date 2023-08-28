@@ -9,6 +9,7 @@
 <form method="post" th:action="@{/doLogin}">
     用户名:<input name="uname" type="text"/><br>
     密码:<input name="passwd" type="password"/><br>
+    验证码: <input name="kaptcha" type="text"/> <img alt="" th:src="@{/vc.png}"><br>
     <input type="submit" value="登录"/>
     <div th:text="${SPRING_SECURITY_LAST_EXCEPTION}"></div>
 </form>
