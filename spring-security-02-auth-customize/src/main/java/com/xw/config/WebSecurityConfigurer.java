@@ -23,7 +23,8 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 // .successForwardUrl("/index")     // 默认使用 `forward `跳转 注意:不会跳转到之前请求路径`
                 // .defaultSuccessUrl("/index")    // 默认使用 `redirect` 跳转 注意:如果之前请求路径,会有优先跳转之前请求路径,可以传入第二个参数进行修改`
                 .successHandler(new MyAuthenticationSuccessHandler())
-                .failureUrl("/login.html")
+                // .failureUrl("/login.html")
+                .failureForwardUrl("/login.html")   // 获取 request 中异常信息,这里只能使用failureForwardUrl
                 .and()
                 .csrf().disable();
     }
