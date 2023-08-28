@@ -28,6 +28,12 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 // .failureForwardUrl("/login.html")   // 获取 request 中异常信息,这里只能使用failureForwardUrl
                 .failureHandler(new MyAuthenticationFailureHandler())
                 .and()
+                .logout()
+                .logoutUrl("/logout")
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .logoutSuccessUrl("/login.html")
+                .and()
                 .csrf().disable();
     }
 
