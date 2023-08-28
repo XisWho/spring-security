@@ -1,6 +1,7 @@
 package com.xw.config;
 
-import com.xw.customize.authenticationSuccessHandler.MyAuthenticationSuccessHandler;
+import com.xw.customize.authenticationHandler.MyAuthenticationFailureHandler;
+import com.xw.customize.authenticationHandler.MyAuthenticationSuccessHandler;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -24,7 +25,8 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 // .defaultSuccessUrl("/index")    // 默认使用 `redirect` 跳转 注意:如果之前请求路径,会有优先跳转之前请求路径,可以传入第二个参数进行修改`
                 .successHandler(new MyAuthenticationSuccessHandler())
                 // .failureUrl("/login.html")
-                .failureForwardUrl("/login.html")   // 获取 request 中异常信息,这里只能使用failureForwardUrl
+                // .failureForwardUrl("/login.html")   // 获取 request 中异常信息,这里只能使用failureForwardUrl
+                .failureHandler(new MyAuthenticationFailureHandler())
                 .and()
                 .csrf().disable();
     }

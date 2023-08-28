@@ -1,4 +1,4 @@
-package com.xw.customize.authenticationSuccessHandler;
+package com.xw.customize.authenticationHandler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.core.Authentication;
